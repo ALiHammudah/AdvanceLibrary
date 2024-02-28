@@ -8,6 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+//builder.Services.AddFluentValidation(x =>
+//{
+//    x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+//});
+
 builder.Services.AddInfraServieces(builder.Configuration);
 builder.Services.AddValidatorServieces();
 

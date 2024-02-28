@@ -1,9 +1,10 @@
-﻿using AdvanceLibrary.Domain.Dtos.Book;
+﻿using AdvanceLibrary.Application.Contract.Repositries;
+using AdvanceLibrary.Domain.Dtos.Book;
 using AdvanceLibrary.Domain.Queries.Book;
 using MediatR;
 
 namespace AdvanceLibrary.Application.Featcures.Book.Queries;
-public class GetAllBookHandler : IRequestHandler<GetAllBookQuery, List<GetBookDto>>
+public class GetAllBookHandler : IRequestHandler<GetAllBookQuery, List<BookDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
     public GetAllBookHandler(IUnitOfWork unitOfWork)
@@ -11,9 +12,8 @@ public class GetAllBookHandler : IRequestHandler<GetAllBookQuery, List<GetBookDt
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<List<GetBookDto>> Handle(GetAllBookQuery request, CancellationToken cancellationToken)
+    public async Task<List<BookDto>> Handle(GetAllBookQuery request, CancellationToken cancellationToken)
     {
-        List<GetBookDto> allbook = await _unitOfWork.Books.GetAllBookAsync();
-        return allbook;
+        return await _unitOfWork.Books.GetAllBookAsync();
     }
 }

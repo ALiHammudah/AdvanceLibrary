@@ -2,7 +2,7 @@
 using AdvanceLibrary.Domain.Dtos.Auth;
 using AdvanceLibrary.Domain.Queries.User;
 
-namespace AdvanceLibrary.Application.Contract;
+namespace AdvanceLibrary.Application.Contract.Serviese;
 public interface IAuthServices
 {
     Task<AuthDto> RegisterAsync(RegistrationCommand models);

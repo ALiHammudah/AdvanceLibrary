@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace AdvanceLibrary.Domain.Entities;
 public class Book
 {
-    public Book() { }
+    //public Book() { }
     public Guid Id { get; set; }
     [Required, StringLength(100)]
     public string Name { get; set; }

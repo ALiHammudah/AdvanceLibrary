@@ -1,4 +1,4 @@
-﻿using AdvanceLibrary.Application.Contract;
+﻿using AdvanceLibrary.Application.Contract.Serviese;
 using System.Security.Cryptography;
 
 namespace AdvanceLibrary.infrastructure.Repostries;

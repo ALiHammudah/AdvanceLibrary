@@ -1,5 +1,6 @@
 ﻿using AdvanceLibrary.Application.Contract;
 using AdvanceLibrary.Domain.Commends.Book;
+using AdvanceLibrary.Domain.Dtos.Api;
 using AdvanceLibrary.Domain.Dtos.Book;
 using AdvanceLibrary.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -9,21 +10,19 @@ public class BookRepository : BaseRepository<Book>, IBookRepositry
 {
     public BookRepository(AppDbContext context) : base(context) { }
 
-    public async Task<List<GetBookDto>> GetAllBookAsync()
+    public async Task<List<BookDto>> GetAllBookAsync()
     {
-        return await _context.Books.Select(i => new GetBookDto
+        return await _context.Books.Select(i => new BookDto
         {
-            BookId = i.Id,
-            BookName = i.Name,
-            Quantity = i.Quantity,
-            AuthorName = i.Author
+            Id = i.Id,
+            Name = i.Name,
         }).ToListAsync();
     }
 
-    public async Task<GetBookDto> FindBookAsync(Guid id)
+    public async Task<BookDitailDto> FindBookAsync(Guid id)
     {
         var book = await _context.Books
-            .Select(i => new GetBookDto
+            .Select(i => new BookDitailDto
             {
                 BookId = i.Id,
                 BookName = i.Name,
@@ -34,7 +33,7 @@ public class BookRepository : BaseRepository<Book>, IBookRepositry
         return book;
     }
 
-    public async Task<AddBookDto> AddBookAsync(AddBookCommand model)
+    public async Task<ApiDto> AddBookAsync(AddBookCommand model)
     {
         if (await _context.Books.AnyAsync(b => b.Name == model.Name))
             return null;
@@ -50,11 +49,10 @@ public class BookRepository : BaseRepository<Book>, IBookRepositry
         await _context.Books.AddAsync(book);
         await _context.SaveChangesAsync();
 
-        return new AddBookDto
+        return new ApiDto
         {
-            Messege = "Book added!",
-            BookId = book.Id,
-            BookName = book.Name
+            Name = model.Name,
+            Messege = "Book added!"
         };
     }
 
@@ -72,8 +70,8 @@ public class BookRepository : BaseRepository<Book>, IBookRepositry
 
         return new BookDto
         {
-            BookId = book.Id,
-            BookName = book.Name
+            Id = book.Id,
+            Name = book.Name
         };
     }
 }

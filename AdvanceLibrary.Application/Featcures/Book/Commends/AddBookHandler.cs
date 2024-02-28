@@ -1,28 +1,16 @@
-﻿using AdvanceLibrary.Domain.Commends.Book;
-using AdvanceLibrary.Domain.Dtos.Book;
-using FluentValidation;
+﻿using AdvanceLibrary.Application.Contract.Repositries;
+using AdvanceLibrary.Domain.Commends.Book;
+using AdvanceLibrary.Domain.Dtos.Api;
 using MediatR;
 
 namespace AdvanceLibrary.Application.Featcures.Book.Commends;
-public class AddBookHandler : IRequestHandler<AddBookCommand, AddBookDto>
+public class AddBookHandler : IRequestHandler<AddBookCommand, ApiDto>
 {
-    private readonly IValidator<AddBookCommand> _valitator;
     private readonly IUnitOfWork _unitOfWork;
-    public AddBookHandler(IUnitOfWork unitOfWork, IValidator<AddBookCommand> validator)
-    {
-        _unitOfWork = unitOfWork;
-        _valitator = validator;
-    }
+    public AddBookHandler(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
-    public async Task<AddBookDto> Handle(AddBookCommand request, CancellationToken cancellationToken)
+    public async Task<ApiDto> Handle(AddBookCommand request, CancellationToken cancellationToken)
     {
-        var result = await _valitator.ValidateAsync(request);
-        if (result.Errors.Any())
-            return new AddBookDto
-            {
-                Messege = result.Errors.FirstOrDefault().ToString(),
-            };
-
         return await _unitOfWork.Books.AddBookAsync(request);
     }
 }

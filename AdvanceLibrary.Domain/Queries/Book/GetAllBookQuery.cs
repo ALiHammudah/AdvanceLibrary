@@ -2,4 +2,4 @@
 using MediatR;
 
 namespace AdvanceLibrary.Domain.Queries.Book;
-public record GetAllBookQuery : IRequest<List<GetBookDto>>;
+public record GetAllBookQuery : IRequest<List<BookDto>>;

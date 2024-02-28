@@ -1,5 +1,7 @@
 ﻿using AdvanceLibrary.Application;
 using AdvanceLibrary.Application.Contract;
+using AdvanceLibrary.Application.Contract.Repositries;
+using AdvanceLibrary.Application.Contract.Serviese;
 using AdvanceLibrary.Domain.Auth;
 using AdvanceLibrary.infrastructure.Repostries;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

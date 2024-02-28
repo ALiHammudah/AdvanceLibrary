@@ -1,5 +1,5 @@
 ﻿namespace AdvanceLibrary.Domain.Dtos.Book;
-public class GetBookDto
+public class BookDitailDto
 {
     public Guid BookId { get; set; }
     public string BookName { get; set; }

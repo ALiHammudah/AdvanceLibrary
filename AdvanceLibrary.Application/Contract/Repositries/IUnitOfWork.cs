@@ -1,6 +1,6 @@
-﻿using AdvanceLibrary.Application.Contract;
+﻿using AdvanceLibrary.Application.Contract.Serviese;
 
-namespace AdvanceLibrary.Application;
+namespace AdvanceLibrary.Application.Contract.Repositries;
 public interface IUnitOfWork : IDisposable
 {
     IBookRepositry Books { get; }

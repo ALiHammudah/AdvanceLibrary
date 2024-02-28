@@ -1,4 +1,5 @@
-﻿using AdvanceLibrary.Domain.Dtos.Auth;
+﻿using AdvanceLibrary.Application.Contract.Repositries;
+using AdvanceLibrary.Domain.Dtos.Auth;
 using AdvanceLibrary.Domain.Queries.User;
 using MediatR;
 

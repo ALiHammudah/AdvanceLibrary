@@ -1,4 +1,4 @@
-﻿using AdvanceLibrary.Application.Contract;
+﻿using AdvanceLibrary.Application.Contract.Serviese;
 using AdvanceLibrary.Domain.Auth;
 using AdvanceLibrary.Domain.Commends.User;
 using AdvanceLibrary.Domain.Dtos.Auth;
