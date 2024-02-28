@@ -42,7 +42,7 @@ namespace AdvanceLibrary.infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("AdvanceLibrary.Domain.Entities.Customer", b =>
@@ -72,7 +72,7 @@ namespace AdvanceLibrary.infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("AdvanceLibrary.Domain.Entities.CustomerBook", b =>
@@ -93,7 +93,7 @@ namespace AdvanceLibrary.infrastructure.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("CustomerBooks");
+                    b.ToTable("CustomerBooks", (string)null);
                 });
 
             modelBuilder.Entity("AdvanceLibrary.Domain.Entities.User", b =>
@@ -129,7 +129,7 @@ namespace AdvanceLibrary.infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("AdvanceLibrary.Domain.Entities.CustomerBook", b =>
