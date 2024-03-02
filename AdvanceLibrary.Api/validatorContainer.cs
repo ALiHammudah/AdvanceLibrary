@@ -1,5 +1,6 @@
 ﻿using AdvanceLibrary.Domain.Commends.Book;
 using AdvanceLibrary.Domain.Commends.Customer;
+using AdvanceLibrary.Domain.Validator;
 using AdvanceLibrary.Domain.Validator.Book;
 using AdvanceLibrary.Domain.Validator.Customer;
 using FluentValidation;
@@ -16,7 +17,10 @@ public static class validatorContainer
         services.AddScoped<IValidator<UpdateBookCommand>, UpdateBookValidator>();
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddScoped<IValidatorFactory, ValidatorFactory>();
+        //services.AddValidatorsFromAssembly(typeof(IValidator).Assembly);
 
+        //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationHandler<,>));
         return services;
     }
 }

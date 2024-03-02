@@ -9,6 +9,5 @@ public interface IBookRepositry : IBaseRepositry<Book>
     Task<List<BookDto>> GetAllBookAsync();
     Task<BookDitailDto> FindBookAsync(Guid id);
     Task<ApiDto> AddBookAsync(AddBookCommand model);
-    //Task<GetBookDto> Update(UpdateBookCommand model);
-    Task<BookDto> DeleteBookAsync(Guid id);
+    Task<ApiDto> DeleteBookAsync(Guid id);
 }

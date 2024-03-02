@@ -56,22 +56,30 @@ public class BookRepository : BaseRepository<Book>, IBookRepositry
         };
     }
 
-    public async Task<BookDto> DeleteBookAsync(Guid id)
+    public async Task<ApiDto> DeleteBookAsync(Guid id)
     {
         if (await _context.CustomerBooks.AnyAsync(c => c.BookId == id))
-            return null;
+            return new ApiDto
+            {
+                Name = "",
+                Messege = "you can't delete book! it's in borrowed list."
+            };
 
         Book book = await _context.Books.FirstOrDefaultAsync(i => i.Id == id);
         if (book is null)
-            return null;
+            return new ApiDto
+            {
+                Name = "",
+                Messege = "there is no book with this id!"
+            };
 
         await Task.Run(() => _context.Books.Remove(book));
         await _context.SaveChangesAsync();
 
-        return new BookDto
+        return new ApiDto
         {
-            Id = book.Id,
-            Name = book.Name
+            Name = book.Name,
+            Messege = "book deleted!"
         };
     }
 }
